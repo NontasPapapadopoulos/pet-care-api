@@ -1,7 +1,8 @@
-package nondas.pap.petcare;
+package nondas.pap.petcare.model;
 
 
 import jakarta.persistence.*;
+import nondas.pap.petcare.model.Pet;
 
 import java.util.List;
 
