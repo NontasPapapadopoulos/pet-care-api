@@ -1,4 +1,4 @@
-package nondas.pap.petcare;
+package nondas.pap.petcare.controller;
 
 
 import nondas.pap.petcare.model.Pet;
@@ -42,17 +42,6 @@ public class PetController {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
