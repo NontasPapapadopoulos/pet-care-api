@@ -2,6 +2,7 @@ package nondas.pap.petcare.config;
 
 
 import lombok.RequiredArgsConstructor;
+import nondas.pap.petcare.model.User;
 import nondas.pap.petcare.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    @Autowired
     private final UserRepository userRepository;
 
 
