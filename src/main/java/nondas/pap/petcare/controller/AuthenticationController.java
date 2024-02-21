@@ -5,6 +5,7 @@ import nondas.pap.petcare.service.AuthenticationService;
 import nondas.pap.petcare.model.AuthenticationRequest;
 import nondas.pap.petcare.model.AuthenticationResponse;
 import nondas.pap.petcare.model.RegisterRequest;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,8 @@ public class AuthenticationController {
     private final AuthenticationService service;
 
 
-    @PostMapping("/register")
+    @PostMapping(path = "/register",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
