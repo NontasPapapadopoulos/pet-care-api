@@ -6,7 +6,7 @@ import nondas.pap.petcare.config.JwtService;
 import nondas.pap.petcare.model.AuthenticationRequest;
 import nondas.pap.petcare.model.AuthenticationResponse;
 import nondas.pap.petcare.model.RegisterRequest;
-import nondas.pap.petcare.model.User;
+import nondas.pap.petcare.entity.User;
 import nondas.pap.petcare.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package nondas.pap.petcare.model;
+package nondas.pap.petcare.entity;
 
 
 import jakarta.persistence.*;
@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+import nondas.pap.petcare.model.enums.Gender;
+import nondas.pap.petcare.model.enums.PetType;
 
 @Data
 @Builder
@@ -18,14 +19,11 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer petId;
-
+    private Integer ownerId;
     private String name;
-
     private String dob;
-
-    private String type;
-
-    private String gender;
+    private PetType type;
+    private Gender gender;
 
 
 //    @ManyToOne(cascade = CascadeType.REMOVE)

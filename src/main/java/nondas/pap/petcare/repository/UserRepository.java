@@ -1,6 +1,6 @@
 package nondas.pap.petcare.repository;
 
-import nondas.pap.petcare.model.User;
+import nondas.pap.petcare.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

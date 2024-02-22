@@ -1,4 +1,4 @@
-package nondas.pap.petcare.model;
+package nondas.pap.petcare.entity;
 
 
 import jakarta.persistence.*;
@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import nondas.pap.petcare.model.enums.MedicineType;
+import nondas.pap.petcare.model.enums.RepeatRate;
 
 import java.util.Date;
 
@@ -20,11 +22,11 @@ public class Medicine {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer medicineId;
 
-    private MedicineType medicine;
-
-    private Date dateGranted;
-
-    private String frequency;
+    private MedicineType medicineType;
+    private RepeatRate repeatRate;
+    private String dateReceived;
+    private String comments;
+    private int petId;
 
 //    @ManyToOne(cascade = CascadeType.REMOVE)
 //    @JoinColumn(name = "pet_id")

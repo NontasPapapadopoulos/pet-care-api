@@ -1,4 +1,4 @@
-package nondas.pap.petcare.model;
+package nondas.pap.petcare.entity;
 
 
 import jakarta.persistence.*;
@@ -6,12 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nondas.pap.petcare.model.Pet;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 @Data
 @Builder
