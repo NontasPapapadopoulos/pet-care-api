@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import nondas.pap.petcare.model.enums.Gender;
 import nondas.pap.petcare.model.enums.PetType;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -26,12 +28,12 @@ public class Pet {
     private Gender gender;
 
 
-//    @ManyToOne(cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "user_id")
-//    private User owner;
-//
-//
-//    @OneToMany(mappedBy = "pet")
-//    private List<Medicine> medicines;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_id")
+    private User owner;
+
+
+    @OneToMany(mappedBy = "pet")
+    private List<Medicine> medicines;
 
 }

@@ -26,11 +26,11 @@ public class Medicine {
     private RepeatRate repeatRate;
     private String dateReceived;
     private String comments;
-    private int petId;
+//    private int petId;
 
-//    @ManyToOne(cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "pet_id")
-//    private Pet pet;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
 
 
 }

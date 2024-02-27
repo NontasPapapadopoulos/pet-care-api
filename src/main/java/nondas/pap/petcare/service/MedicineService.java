@@ -18,7 +18,8 @@ public class MedicineService {
 
 
     public List<Medicine> getMedicines(int petId) {
-        return repository.findAllByPetId(petId);
+        return null;
+                //repository.findAllByPetId(petId);
     }
 
 

@@ -17,7 +17,7 @@ public class PetService {
 
 
     public List<Pet> getPets(String userId) {
-        return petRepository.getPetsById(userId);
+        return null;
     }
 
     public void addPet(AddPetRequest addPetRequest) {
