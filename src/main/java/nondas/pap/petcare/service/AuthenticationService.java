@@ -3,6 +3,7 @@ package nondas.pap.petcare.service;
 
 import lombok.RequiredArgsConstructor;
 import nondas.pap.petcare.config.JwtService;
+import nondas.pap.petcare.exception.EmailAlreadyExists;
 import nondas.pap.petcare.model.AuthenticationRequest;
 import nondas.pap.petcare.model.AuthenticationResponse;
 import nondas.pap.petcare.model.RegisterRequest;
@@ -10,6 +11,7 @@ import nondas.pap.petcare.entity.User;
 import nondas.pap.petcare.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +28,15 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws Exception {
         var user = User.builder()
                 .email(request.getEmail())
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
+
+        if (userRepository.findByEmail(request.getEmail()).isEmpty())
+            throw new EmailAlreadyExists("Email already exists");
 
         userRepository.save(user);
 
@@ -51,8 +56,7 @@ public class AuthenticationService {
                 )
         );
         var user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow();
-
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + request.getEmail()));
 
         var jwtToken = jwtService.generateToken(user);
 

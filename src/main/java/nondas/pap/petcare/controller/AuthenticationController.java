@@ -24,7 +24,7 @@ public class AuthenticationController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
-    ) {
+    ) throws Exception {
         return ResponseEntity.ok(service.register(request));
     }
 
