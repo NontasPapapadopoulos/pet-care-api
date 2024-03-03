@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import nondas.pap.petcare.model.AddPetRequest;
 import nondas.pap.petcare.entity.Pet;
 import nondas.pap.petcare.repository.PetRepository;
+import nondas.pap.petcare.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class PetService {
 
     private final PetRepository petRepository;
+
+    private final UserRepository userRepository;
 
 
     public List<Pet> getPets(String userId) {
@@ -26,7 +29,7 @@ public class PetService {
                 .dob(addPetRequest.getDob())
                 .gender(addPetRequest.getGender())
                 .type(addPetRequest.getType())
-                .ownerId(addPetRequest.getOwnerId())
+                .user(userRepository.findById(addPetRequest.getOwnerId()))
                 .build();
         petRepository.save(pet);
     }

@@ -21,7 +21,6 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer petId;
-    private Integer ownerId;
     private String name;
     private String dob;
     private PetType type;
@@ -30,7 +29,7 @@ public class Pet {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id")
-    private User owner;
+    private User user;
 
 
     @OneToMany(mappedBy = "pet")
