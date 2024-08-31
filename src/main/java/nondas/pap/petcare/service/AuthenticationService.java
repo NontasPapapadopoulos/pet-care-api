@@ -35,7 +35,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 
-        if (userRepository.findByEmail(request.getEmail()).isEmpty())
+        if (!userRepository.findByEmail(request.getEmail()).isEmpty())
             throw new EmailAlreadyExists("Email already exists");
 
         userRepository.save(user);
@@ -49,12 +49,12 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getEmail(),
+//                        request.getPassword()
+//                )
+//        );
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + request.getEmail()));
 
@@ -65,4 +65,22 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .build();
     }
+
+//    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+//        var auth = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getEmail(),
+//                        request.getPassword()
+//                )
+//        );
+//
+//        var claims = new HashMap<String, Object>();
+//        var user = ((User) auth.getPrincipal());
+//        claims.put("fullName", user.getFullName());
+//
+//        var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
+//        return AuthenticationResponse.builder()
+//                .token(jwtToken)
+//                .build();
+//    }
 }

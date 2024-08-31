@@ -20,7 +20,7 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer petId;
+    public Integer petId;
     private String name;
     private String dob;
     private PetType type;

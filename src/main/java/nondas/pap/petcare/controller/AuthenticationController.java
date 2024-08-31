@@ -1,6 +1,7 @@
 package nondas.pap.petcare.controller;
 
 import lombok.RequiredArgsConstructor;
+import nondas.pap.petcare.Payload;
 import nondas.pap.petcare.service.AuthenticationService;
 import nondas.pap.petcare.model.AuthenticationRequest;
 import nondas.pap.petcare.model.AuthenticationResponse;
@@ -30,10 +31,11 @@ public class AuthenticationController {
 
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> login(
+    public ResponseEntity<Payload> login(
             @RequestBody AuthenticationRequest request
     ) {
-        return ResponseEntity.ok(service.authenticate(request));
+        Payload payload = new Payload<>(service.authenticate(request));
+        return ResponseEntity.ok(payload);
     }
 
 

@@ -21,7 +21,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer userId;
+    public Integer userId;
 
     private String name;
 
@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private List<Pet> pets;
 
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -43,6 +44,10 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
+
+    public List<Pet> getPets() {return pets;}
+
+    public String getName() {return name;}
 
     @Override
     public String getPassword() {
